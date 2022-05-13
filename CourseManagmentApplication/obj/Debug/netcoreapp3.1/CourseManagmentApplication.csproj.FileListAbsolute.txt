@@ -1,0 +1,14 @@
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\bin\Debug\netcoreapp3.1\CourseManagmentApplication.exe
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\bin\Debug\netcoreapp3.1\CourseManagmentApplication.deps.json
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\bin\Debug\netcoreapp3.1\CourseManagmentApplication.runtimeconfig.json
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\bin\Debug\netcoreapp3.1\CourseManagmentApplication.runtimeconfig.dev.json
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\bin\Debug\netcoreapp3.1\CourseManagmentApplication.dll
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\bin\Debug\netcoreapp3.1\CourseManagmentApplication.pdb
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.csproj.AssemblyReference.cache
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.GeneratedMSBuildEditorConfig.editorconfig
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.AssemblyInfoInputs.cache
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.AssemblyInfo.cs
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.csproj.CoreCompileInputs.cache
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.dll
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.pdb
+D:\This PC\CourseManagmentApplication\CourseManagmentApplication\obj\Debug\netcoreapp3.1\CourseManagmentApplication.genruntimeconfig.cache
