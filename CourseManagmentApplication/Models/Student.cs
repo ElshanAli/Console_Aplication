@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CourseManagmentApplication
 {
-    class Student
+    class Student   
     {
          static string ID;
         public string Name;
