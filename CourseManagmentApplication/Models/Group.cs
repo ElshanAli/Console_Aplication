@@ -11,24 +11,25 @@ namespace CourseManagmentApplication
         public Categories Category;
         public bool IsOnline;
         byte _limit;
-        List<Student>_listOfStudents = new List<Student>();
+        List<Group>_listOfGroups = new List<Group>();
         public static int count = 100;
+        public static int groupcount;
 
-        public List<Student>CheckLimit
+        public List<Group>CheckLimit
         {
-            get => _listOfStudents;
+            get => _listOfGroups;
             set
             {
                 if (!IsOnline)
                 {
                     _limit = 15;
-                    _listOfStudents = new List<Student>(_limit);
+                    _listOfGroups = new List<Group>(_limit);
                     Console.WriteLine(" Online limit is 15");
                 }
                 else if (IsOnline)
                 {
                     _limit = 10;
-                    _listOfStudents = new List<Student>(_limit);
+                    _listOfGroups = new List<Group>(_limit);
                     Console.WriteLine(" Ofline limit is 10");
                 }
             }

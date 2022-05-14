@@ -11,7 +11,11 @@ namespace CourseManagmentApplication
         public string Surname;
         public string GroupNumber;
         public bool Type;
-             
+
+        public Student()
+        {
+
+        }
         public Student(string id, string name,string surname, string groupnumber)
         {
             ID = id;
