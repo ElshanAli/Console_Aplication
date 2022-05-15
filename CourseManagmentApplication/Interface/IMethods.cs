@@ -9,12 +9,12 @@ namespace CourseManagmentApplication.Interface
     {
         public List<Group> Groupss { get;  }
         public List<Student> Studentss { get; }
-        string CreateNewGroup(string groupno,Categories category);
+       void CreateNewGroup(Categories category,bool iSOnline);
         void ShowAllGroupList();
         void EditGroup(string oldgroupnum, string newgroupnum);
         void ShowListOfStudentsByGroup();
         void ShowAllOfStudents();
         void CreateStudent(string name,string surname,string groupnumber);
-        void DeleteStudent();
+        void DeleteStudent(string name, string surname, string groupnumber);
     }
 }

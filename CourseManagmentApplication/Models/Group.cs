@@ -11,10 +11,50 @@ namespace CourseManagmentApplication
         public Categories Category;
         public bool IsOnline;
         byte _limit;
+        public int Limit;
         public List<Group>_listOfGroups = new List<Group>();
-        public static int count = 100;
+        public static int count;
         public static int groupcount;
 
+        public List<Student> ListOfStudent = new List<Student>();
+        public Group()
+        {
+
+        }
+        static Group()
+        {
+            count = 0;
+            groupcount = 100;
+
+        }
+        public Group(Categories category,bool Isonline)
+        {
+            Category = category;
+            IsOnline =Isonline;
+            count++;
+            groupcount++;
+            Limit = Isonline ? 10 : 15;
+
+          
+
+            switch (category)
+            {
+
+                case Categories.Software_Development:
+                    GroupNo = $" SD-" + groupcount;
+                    break;
+                case Categories.System_Administrator:
+                    GroupNo = $"SA-" + groupcount;
+                    break;
+                case Categories.Design:
+                    GroupNo = $"D-" + groupcount;
+                    break;
+                default:
+                    break;
+            }         
+            count++;
+
+        }
         public List<Group>CheckLimit
         {
             get => _listOfGroups;
@@ -33,30 +73,19 @@ namespace CourseManagmentApplication
                     Console.WriteLine(" Ofline limit is 10");
                 }
             }
-        } 
-
-        public Group(string groupno, Categories category)
-        {
-            GroupNo = groupno;          
-            IsOnline = false;
-
-            switch (category)
-            {
-               
-                case Categories.Software_Development:
-                    GroupNo = $" SD - " + count;
-                    break;
-                case Categories.System_Administrator:
-                    GroupNo = $"SA - " + count;
-                    break;
-                case Categories.Design:
-                    GroupNo = $"D - " + count;
-                    break;
-                default:
-                    break;
-            }
-            Category = category;
-            count++;
         }
+        public void ShowStudent()
+        {
+            foreach (Student student in ListOfStudent)
+            {
+                Console.WriteLine(student);
+            }
+        }
+        public override string ToString()
+        {
+            return $"{GroupNo}  {Category}";
+        }
+
+
     }
 }

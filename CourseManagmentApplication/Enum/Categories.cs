@@ -5,9 +5,8 @@ using System.Text;
 namespace CourseManagmentApplication.Models
 {
     enum Categories
-    {
-        GroupNumber=1,
-        Software_Development,
+    {       
+        Software_Development=1,
         System_Administrator,
         Design
     }
