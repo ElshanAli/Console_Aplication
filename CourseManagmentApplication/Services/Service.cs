@@ -9,9 +9,10 @@ namespace CourseManagmentApplication.Services
     class Service : IMethods
     {
         List<Group> _listOfGroups = new List<Group>();
+        List<Student> _listOfStudent = new List<Student>(); 
         public List<Group> Groupss { get => _listOfGroups; }
 
-
+        public List<Student> Studentss => _listOfStudent;
 
         public string CreateNewGroup(string groupno, Categories category)
         {
@@ -21,7 +22,7 @@ namespace CourseManagmentApplication.Services
             }
             Group group = new Group(groupno, category);
 
-            if (Group.groupcount == 0)
+            if (Group.groupcount >= 0)
             {
                 Group.groupcount++;
                 _listOfGroups.Add(group);
@@ -29,27 +30,27 @@ namespace CourseManagmentApplication.Services
             }
             foreach (Group groups in _listOfGroups)
             {
-                if (group.GroupNo.ToLower().Trim() != groups.GroupNo.ToLower().Trim())
+                if (!string.IsNullOrEmpty(groupno)||!string.IsNullOrWhiteSpace(groupno))
                 {
-                    _listOfGroups.Add(group);
-                    return $"{group.GroupNo} is succesfully";
+                    _listOfGroups.Add(groups);
+                    return $"{groups.GroupNo} is succesfully";
                 }
             }
             return " Group can't created";
         }
 
-        public void CreateStudent(string name,string surname)
+        public void CreateStudent(string name,string surname,string groupnumber)
         {
             Student student = new Student();
-            if (string.IsNullOrEmpty(student.FullName())!=string.IsNullOrWhiteSpace(student.FullName()))
+            if (string.IsNullOrEmpty(student.FullName())||string.IsNullOrWhiteSpace(student.FullName()))
             {
-                Console.WriteLine("Please enter the correct Student FullName"); 
+                Console.WriteLine("Please enter the correct Student FullName");
             }
-            if ()
+            else
             {
-
-            }
-            
+                Console.WriteLine($"{student.FullName()}");
+                _listOfStudent.Add(student);
+            }           
         }
 
         public void DeleteStudent()
@@ -57,24 +58,76 @@ namespace CourseManagmentApplication.Services
             throw new NotImplementedException();
         }
 
-        public void EditGroup()
+        public void EditGroup(string oldgroupnum,string newgroupnum)
         {
-            throw new NotImplementedException();
+            if (FindGroup(newgroupnum)==null)
+            {
+                Group group = FindGroup(oldgroupnum);
+                if (group!=null)
+                {
+                    group.GroupNo = newgroupnum.ToUpper().Trim();
+                    Console.WriteLine($"{group.GroupNo} is succesfully edited");
+                }
+                else
+                {
+                    Console.WriteLine($"There is no group => {oldgroupnum.ToUpper()}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"There is group => {newgroupnum.ToUpper()}");
+            }
+           
         }
 
         public void ShowAllGroupList()
         {
-            throw new NotImplementedException();
+            if (Group.count>0)
+            {
+                foreach (Group grouplist in  Groupss)
+                {
+                    Console.WriteLine(grouplist);
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no group here");
+            }
         }
 
         public void ShowAllOfStudents()
         {
-            throw new NotImplementedException();
+            if (Student.Count>0)
+            {
+                foreach (Student student in Studentss)
+                {
+                    Console.WriteLine(student);
+                }
+            }
+            else
+            {
+                Console.WriteLine("There is no students");
+            }
         }
 
-        public void ShowListOfStudents()
+        public void ShowListOfStudentsByGroup()
         {
-            throw new NotImplementedException();
+            foreach (Student student in _listOfStudent)
+            {
+                Console.WriteLine(student);
+            }
+          
+        }
+        public Group FindGroup(string groupnum)
+        {
+            foreach (Group group in Groupss)
+            {
+                if (group.GroupNo.ToLower().Trim()==groupnum.ToLower().Trim())
+                {
+                    return group;
+                }
+            }
+            return null;
         }
     }
 }

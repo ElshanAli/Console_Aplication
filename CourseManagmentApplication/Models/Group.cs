@@ -11,7 +11,7 @@ namespace CourseManagmentApplication
         public Categories Category;
         public bool IsOnline;
         byte _limit;
-        List<Group>_listOfGroups = new List<Group>();
+        public List<Group>_listOfGroups = new List<Group>();
         public static int count = 100;
         public static int groupcount;
 

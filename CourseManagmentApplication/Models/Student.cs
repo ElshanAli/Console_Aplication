@@ -11,6 +11,7 @@ namespace CourseManagmentApplication
         public string Surname;
         public string GroupNumber;
         public bool Type;
+        public static int Count;
 
         public Student()
         {
@@ -26,7 +27,7 @@ namespace CourseManagmentApplication
         }
         public string FullName()
         {
-            return $"Name {Name} Surname {Surname}";
+            return $"Name {Name} Surname {Surname} Group Number: {GroupNumber}";
         }
        
     }
