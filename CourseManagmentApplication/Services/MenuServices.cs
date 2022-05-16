@@ -45,7 +45,6 @@ namespace CourseManagmentApplication.Services
         public static void EditGroupMenu()
         {
             Console.WriteLine("Enter The Group Number");
-
             string oldgroupnum = Console.ReadLine();
             Console.WriteLine("Enter The New Group Number");
             string newgroupnum = Console.ReadLine();
@@ -74,18 +73,36 @@ namespace CourseManagmentApplication.Services
         }
         public static void CreateStudentMenu()
         {
+            string name;
+            string surname;
+            string groupnum;
+            do
+            {
+                Console.WriteLine(" Enter The Name");
+                 name = Console.ReadLine();
+                Console.WriteLine(" Enter the correct Name\n");
+            } while (string.IsNullOrEmpty(name)||string.IsNullOrWhiteSpace(name));
+            do
+            {
+                Console.WriteLine(" Enter The Surname");
+                surname = Console.ReadLine();
+                Console.WriteLine(" Enter the correct Surname\n");
 
-            Console.WriteLine("Enter The Name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter The Surname");
-            string surname = Console.ReadLine();
-            Console.WriteLine("Enter The Group Number\n");
+            } while (string.IsNullOrEmpty(name)||string.IsNullOrWhiteSpace(name));
+
+            do
+            {
+                Console.WriteLine(" Enter The Group Number\n");
                 foreach (Group grouplist in service.Groupss)
                 {
                     Console.WriteLine(grouplist);
                 }
-            Console.WriteLine("\n Which of the above do you want to add to the group?");
-            string groupnum = Console.ReadLine();
+                Console.WriteLine("\n Which of the above do you want to add to the group?");
+                 groupnum = Console.ReadLine();
+                Console.WriteLine(" Enter the correct Group Number\n");
+
+            } while (string.IsNullOrEmpty(groupnum) || string.IsNullOrWhiteSpace(groupnum));
+          
             Console.WriteLine("Enter your entry point");
             byte point = Convert.ToByte(Console.ReadLine());
             service.CreateStudent(name, surname, groupnum,point);
