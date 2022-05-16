@@ -6,12 +6,13 @@ namespace CourseManagmentApplication
 {
     class Student   
     {
-         static string ID;
+         public int ID;
         public string Name;
         public string Surname;
         public string GroupNumber;
         public bool Type;
-        public static uint Count;
+        public static int Count;
+        public static int IdCount;
         byte _point;
         bool _guarated;
         
@@ -38,23 +39,28 @@ namespace CourseManagmentApplication
         }
         static Student()
         {
-            Count = default;
+            Count = 0;
+            IdCount = 1;
         }
-        public Student( string name,string surname, string groupnumber)
+        public Student( string name,string surname, string groupnumber,byte point)
         {
           
             Name = name;
             Surname = surname;
             GroupNumber = groupnumber;
             Type = false;
+            PointCheck = point;
+            Count++;
+            ID = IdCount;
+            IdCount++;
         }
         public string FullName()
         {
-            return $"Name {Name} Surname {Surname} Group Number: {GroupNumber}";
+            return $"Name {Name} \n Surname {Surname}";
         }
         public override string ToString()
         {
-            return $"About Student \n {FullName()} \n Group Number {GroupNumber}\n Is Guarantee {PointCheck} {_guarated} ";
+            return $"About Student \n {FullName()} \n Group Number {GroupNumber} \n Is Guarantee {PointCheck} {_guarated} \n Is Online {PointCheck}";
         }
 
 

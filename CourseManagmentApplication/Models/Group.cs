@@ -12,7 +12,6 @@ namespace CourseManagmentApplication
         public bool IsOnline;
         byte _limit;
         public int Limit;
-        public List<Group>_listOfGroups = new List<Group>();
         public static int count;
         public static int groupcount;
 
@@ -31,9 +30,10 @@ namespace CourseManagmentApplication
         {
             Category = category;
             IsOnline =Isonline;
-            count++;
+            ++count;
             groupcount++;
-            Limit = Isonline ? 10 : 15;
+            count++;
+            Limit = Isonline ? 2 : 3;
 
           
 
@@ -41,7 +41,7 @@ namespace CourseManagmentApplication
             {
 
                 case Categories.Software_Development:
-                    GroupNo = $" SD-" + groupcount;
+                    GroupNo = $"SD-" + groupcount;
                     break;
                 case Categories.System_Administrator:
                     GroupNo = $"SA-" + groupcount;
@@ -55,22 +55,38 @@ namespace CourseManagmentApplication
             count++;
 
         }
-        public List<Group>CheckLimit
+        public  byte CheckLimit
         {
-            get => _listOfGroups;
+            get => _limit;
             set
             {
                 if (!IsOnline)
                 {
                     _limit = 15;
-                    _listOfGroups = new List<Group>(_limit);
+                    if (_limit<=15)
+                    {
                     Console.WriteLine(" Online limit is 15");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(" You can't add greater than 15");
+                    }
                 }
                 else if (IsOnline)
                 {
                     _limit = 10;
-                    _listOfGroups = new List<Group>(_limit);
+
+                    if (_limit<=10)
+                    {
                     Console.WriteLine(" Ofline limit is 10");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine(" You can't add greater than 10");
+                    }
+                   
                 }
             }
         }

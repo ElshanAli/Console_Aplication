@@ -12,9 +12,9 @@ namespace CourseManagmentApplication.Interface
        void CreateNewGroup(Categories category,bool iSOnline);
         void ShowAllGroupList();
         void EditGroup(string oldgroupnum, string newgroupnum);
-        void ShowListOfStudentsByGroup();
+        void ShowListOfStudentsByGroup(string groupnum);
         void ShowAllOfStudents();
-        void CreateStudent(string name,string surname,string groupnumber);
-        void DeleteStudent(string name, string surname, string groupnumber);
+        void CreateStudent(string name,string surname,string groupnumber,byte point);
+        void DeleteStudent(int id, string groupnumber);
     }
 }

@@ -7,6 +7,8 @@ namespace CourseManagmentApplication.Services
 {
    static class MenuServices
     {
+       
+       
         public static Service service = new Service();
         public static void CreateGroupMenu()
         {
@@ -55,35 +57,46 @@ namespace CourseManagmentApplication.Services
         }
         public static void ShowAllOfStudentsMenu()
         {
-            Console.WriteLine("Enter The Group Number");
-            string groupnumber = Console.ReadLine();
+            
             service.ShowAllOfStudents();
         }
         public static void ShowListOfStudentsByGroupMenu()
         {
-            service.ShowListOfStudentsByGroup();
+            foreach (Group grouplist in service.Groupss)
+            {
+                Console.WriteLine(grouplist);
+            }
+            Console.WriteLine("Enter the Group name");
+          
+            string groupnum = Console.ReadLine();
+           
+            service.ShowListOfStudentsByGroup(groupnum);
         }
         public static void CreateStudentMenu()
         {
+
             Console.WriteLine("Enter The Name");
             string name = Console.ReadLine();
             Console.WriteLine("Enter The Surname");
             string surname = Console.ReadLine();
-            Console.WriteLine("Enter The Group Number");
+            Console.WriteLine("Enter The Group Number\n");
+                foreach (Group grouplist in service.Groupss)
+                {
+                    Console.WriteLine(grouplist);
+                }
+            Console.WriteLine("\n Which of the above do you want to add to the group?");
             string groupnum = Console.ReadLine();
             Console.WriteLine("Enter your entry point");
             byte point = Convert.ToByte(Console.ReadLine());
-            service.CreateStudent(name, surname, groupnum);
+            service.CreateStudent(name, surname, groupnum,point);
         }
         public static void DeleteStudentMenu()
         {
-            Console.WriteLine("Enter the Name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter the surname");
-            string surname = Console.ReadLine();
+            Console.WriteLine("Please, enter ID of student");
+            int id = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter the Group Number");
             string groupnumber = Console.ReadLine();
-            service.DeleteStudent(name,surname,groupnumber);
+            service.DeleteStudent(id,groupnumber);
         }
     }
 }

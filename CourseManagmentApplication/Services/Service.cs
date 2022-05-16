@@ -21,17 +21,18 @@ namespace CourseManagmentApplication.Services
 
             Console.WriteLine(group);           
         }
-        public void CreateStudent(string name,string surname,string groupnumber)
+        public void CreateStudent(string name,string surname,string groupnumber,byte point)
         {           
             if (Group.count>0)
             {
-                Student student = new Student(name,surname,groupnumber);
+                Student student = new Student(name,surname,groupnumber,point);
                 if (string.IsNullOrEmpty(student.FullName()) || string.IsNullOrWhiteSpace(student.FullName()))
                 {
                     Console.WriteLine("Please enter the correct Student FullName");
                 }
                 else
                 {
+                  
                     Group group = GetGroup(groupnumber);
                     if (group==null)
                     {
@@ -43,7 +44,9 @@ namespace CourseManagmentApplication.Services
                         Console.WriteLine(" Dont");
                         return;
                     }
-                    Console.WriteLine($" Name : {name} Surname {surname} Group Number {groupnumber}");
+                   
+                    _listOfStudent.Add(student);
+                    Console.WriteLine($" Name : {name} Surname {surname} Group Number {groupnumber} Guarantee Point: {student.PointCheck}");
                 }
             }
             else
@@ -62,12 +65,23 @@ namespace CourseManagmentApplication.Services
             }
             return null; 
         }
-        public void DeleteStudent(string name, string surname,string groupnumber)
+        public void DeleteStudent(int id, string groupnumber)
         {
-            foreach (Student student in _listOfStudent)
+            Group group = FindGroup(groupnumber);
+            if (group==null)
             {
-                _listOfStudent.Remove(student);
-                break;
+                Console.WriteLine("Group not found");
+            }
+            if (group.ListOfStudent.Count==0)
+            {
+                Console.WriteLine("Student not found");
+            }
+            foreach (var item in group.ListOfStudent)
+            {
+                if (item.ID==id)
+                {
+                    group.ListOfStudent.Remove(item);
+                }
             }
         }
         public void EditGroup(string oldgroupnum,string newgroupnum)
@@ -106,28 +120,42 @@ namespace CourseManagmentApplication.Services
         }
         public void ShowAllOfStudents()
         {
-            if (Student.Count>0)
+            if (Studentss.Count>0)
             {
-                foreach (Student student in Studentss)
+
+                foreach (Group group in Groupss)
                 {
-                    Console.WriteLine(student);
-                }
+
+                    foreach (Student student in Studentss)
+                    {
+                        Console.WriteLine($"Fullname: {student.FullName()} Group Number : {student.GroupNumber} Guarantee Type: {student.PointCheck}");
+                    }
+                }               
             }
             else
             {
                 Console.WriteLine("There is no students");
             }
         }
-        public void ShowListOfStudentsByGroup()
+        public void ShowListOfStudentsByGroup(string groupnum)
         {
+            Group group = FindGroup(groupnum);
+            if (groupnum!=null)
+            {
+
             foreach (Student student in _listOfStudent)
             {
                 Console.WriteLine(student);
-            }          
+            }
+            }
+            else
+            {
+                Console.WriteLine("Group not Found");
+            }
         }
         public Group FindGroup(string groupnum)
         {
-            foreach (Group group in Groupss)
+            foreach (Group group in _listOfGroups)
             {
                 if (group.GroupNo.ToLower().Trim()==groupnum.ToLower().Trim())
                 {
