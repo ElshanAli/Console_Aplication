@@ -8,10 +8,8 @@ namespace CourseManagmentApplication
         static void Main(string[] args)
         {
             byte selection;
-
             do
             {
-
                 Console.WriteLine(" Welcome to the course!");
                 Console.WriteLine(" 1. Create New Group");
                 Console.WriteLine(" 2. Edit Group");

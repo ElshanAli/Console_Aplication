@@ -33,7 +33,7 @@ namespace CourseManagmentApplication
             ++count;
             groupcount++;
             count++;
-            Limit = Isonline ? 2 : 3;
+            Limit = Isonline ? 10 : 15;
 
           
 
